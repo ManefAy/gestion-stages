@@ -1,0 +1,390 @@
+/* =========================================================
+   ui.css — styles of the shared components
+   Every value comes from the tokens in index.css
+   ========================================================= */
+
+/* ---------- BUTTON ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: 44px;                 /* skill rule: click target ≥ 44px */
+  padding: 0 var(--space-4);
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;                  /* skill rule: pointer on clickables */
+  transition: background-color var(--transition), border-color var(--transition);
+  text-decoration: none;            /* when the button is a <Link> */
+}
+
+/* Variant 1: main action (blue) */
+.btn-primary {
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+}
+.btn-primary:hover { background: var(--color-primary-hover); }
+
+/* Variant 2: secondary action (white with border) */
+.btn-secondary {
+  background: var(--color-card);
+  color: var(--color-foreground);
+  border-color: var(--color-border);
+}
+.btn-secondary:hover { background: var(--color-muted); }
+
+/* Variant 3: dangerous action (delete, refuse) */
+.btn-danger {
+  background: var(--color-card);
+  color: var(--color-danger);
+  border-color: #FECACA;
+}
+.btn-danger:hover { background: var(--color-danger-bg); }
+
+/* Smaller buttons for table rows */
+.btn-sm {
+  min-height: 36px;
+  padding: 0 var(--space-3);
+  font-size: 14px;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ---------- BADGE (status label) ---------- */
+.badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 999px;             /* pill shape */
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;              /* "En attente" never breaks in 2 lines */
+}
+.badge-success { background: var(--color-success-bg); color: var(--color-success); }
+.badge-warning { background: var(--color-warning-bg); color: var(--color-warning); }
+.badge-danger  { background: var(--color-danger-bg);  color: var(--color-danger); }
+.badge-info    { background: var(--color-primary-soft); color: var(--color-primary-hover); }
+.badge-neutral { background: var(--color-muted); color: var(--color-text-muted); }
+
+/* ---------- FIELD (label + input + messages) ---------- */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.field-label {
+  font-size: 14px;
+  font-weight: 600;
+}
+.field-hint {
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+.field-error {
+  font-size: 13px;
+  color: var(--color-danger);
+  font-weight: 600;
+}
+
+/* Shared look for every input, select and textarea */
+.input {
+  min-height: 44px;
+  padding: 0 var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-card);
+  transition: border-color var(--transition);
+}
+textarea.input {
+  padding: var(--space-3);
+  resize: vertical;
+}
+.input:hover { border-color: var(--color-text-muted); }
+.input[aria-invalid='true'] { border-color: var(--color-danger); }
+
+/* ---------- PAGE HEADER ---------- */
+.page-header {
+  display: flex;
+  flex-wrap: wrap;                  /* actions go under the title on small screens */
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+.page-header h1 { font-size: 26px; }
+.page-header p {
+  margin: var(--space-1) 0 0;
+  color: var(--color-text-muted);
+  font-size: 15px;
+}
+.page-header-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+/* ---------- APP LAYOUT (sidebar + content) ---------- */
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 256px;
+  flex-shrink: 0;                   /* the sidebar never gets squeezed */
+  background: var(--color-sidebar);
+  color: #E0F2FE;
+  padding: var(--space-6) var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-weight: 700;
+  color: #FFFFFF;
+  padding: 0 var(--space-2);
+}
+.sidebar-logo {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  background: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar-section-title {
+  padding: 0 var(--space-3) var(--space-2);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #7DD3FC;                   /* light blue, readable on the dark sidebar */
+}
+
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-height: 44px;
+  padding: 0 var(--space-3);
+  border-radius: var(--radius-md);
+  color: #E0F2FE;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  transition: background-color var(--transition);
+}
+.sidebar-link:hover { background: rgba(255, 255, 255, 0.08); }
+
+/* NavLink automatically adds the class "active" on the current page */
+.sidebar-link.active {
+  background: var(--color-primary);
+  color: #FFFFFF;
+  font-weight: 600;
+}
+
+.sidebar-user {
+  margin-top: auto;                 /* pushes the user block to the bottom */
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding: var(--space-4) var(--space-2) 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+.sidebar-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.main-content {
+  flex: 1;
+  min-width: 0;                     /* lets wide tables scroll instead of overflowing */
+  padding: var(--space-8);
+}
+
+.card {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: var(--space-8);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-4);
+}
+
+/* Radio / checkbox groups */
+fieldset.group {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+fieldset.group legend {
+  font-size: 14px;
+  font-weight: 600;
+  padding: 0;
+  margin-bottom: var(--space-2);
+}
+
+.choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+/* The whole "chip" is a <label>, so clicking anywhere on it checks the box */
+.choice {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 44px;
+  padding: 0 var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-card);
+  font-size: 14px;
+  cursor: pointer;
+  transition: border-color var(--transition), background-color var(--transition);
+}
+.choice:hover { border-color: var(--color-primary); }
+/* :has() = "a .choice that contains a checked input" → selected look, no JS needed */
+.choice:has(input:checked) {
+  border-color: var(--color-primary);
+  background: var(--color-primary-soft);
+  font-weight: 600;
+}
+/* Keyboard focus on the hidden-looking input → outline on the whole chip */
+.choice:has(input:focus-visible) {
+  outline: 3px solid var(--color-ring);
+  outline-offset: 2px;
+}
+.choice input { accent-color: var(--color-primary); }
+
+/* Small screens: the sidebar goes on top instead of on the left */
+@media (max-width: 900px) {
+  .layout { flex-direction: column; }
+  .sidebar { width: 100%; gap: var(--space-4); }
+  .sidebar nav { flex-direction: row; flex-wrap: wrap; }
+  .main-content { padding: var(--space-4); }
+}
+/* ---------- SELECTABLE LIST (list of projects, mentors...) ---------- */
+.select-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+.select-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  width: 100%;
+  padding: var(--space-4);
+  text-align: left;
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+.select-item:hover { border-color: var(--color-primary); }
+.select-item.is-selected {
+  border: 2px solid var(--color-primary);
+  box-shadow: 0 6px 18px rgba(3, 105, 161, 0.12);
+}
+.select-item strong { font-size: 15px; }
+.select-item span { font-size: 13px; color: var(--color-text-muted); }
+
+/* ---------- FORM SECTIONS (separated by a line) ---------- */
+.form-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--color-border);
+}
+.form-section h3 { font-size: 16px; }
+.form-section-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+/* Input + "Ajouter" button on one line */
+.inline-add {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+.inline-add .input { flex: 1 1 220px; }
+
+/* List of tasks */
+.task-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.task-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-1) var(--space-1) var(--space-1) var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: 15px;
+}
+
+/* Big empty state when nothing is selected */
+.empty-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  padding: 64px var(--space-6);
+  text-align: center;
+  color: var(--color-text-muted);
+}
+
+/* A <button> styled like the sidebar links (logout) */
+button.sidebar-link {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+}

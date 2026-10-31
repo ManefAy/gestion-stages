@@ -1,0 +1,212 @@
+/* rh.css — styles for the Service RH pages */
+
+/* Info note under the page header */
+.note {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  background: var(--color-primary-soft);
+  color: var(--color-primary-hover);
+  font-size: 14px;
+}
+.note svg { flex-shrink: 0; margin-top: 2px; }
+
+/* Status filter: a group of toggle buttons */
+.filter-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  padding: var(--space-1);
+  background: var(--color-muted);
+  border-radius: var(--radius-md);
+}
+.filter-tab {
+  min-height: 40px;
+  padding: 0 14px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color var(--transition);
+}
+.filter-tab:hover { background: rgba(255, 255, 255, 0.6); }
+/* aria-pressed="true" = the active filter → we style it with an attribute selector */
+.filter-tab[aria-pressed='true'] {
+  background: var(--color-card);
+  border-color: var(--color-primary);
+  color: var(--color-primary-hover);
+}
+.filter-tab .count {
+  margin-left: 6px;
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+
+/* Score: bar + number (the number is ALWAYS shown, not only the color) */
+.score {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-width: 150px;
+}
+.score-bar {
+  flex: 1;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--color-muted);
+  overflow: hidden;
+}
+.score-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: var(--color-primary);
+}
+.score-fill.low { background: #94A3B8; } /* below 50% → grey */
+.score strong {
+  min-width: 44px;
+  text-align: right;
+  font-variant-numeric: tabular-nums; /* all digits same width → aligned column */
+}
+
+.rank {
+  font-weight: 700;
+  color: var(--color-text-muted);
+}
+
+/* The candidate's name is a button that opens the details */
+.link-btn {
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+}
+.link-btn:hover { color: var(--color-primary); text-decoration: underline; }
+
+.small { font-size: 13px; }
+
+/* Details panel: label / value pairs */
+.detail-list {
+  margin: 0;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-2) var(--space-4);
+  font-size: 14px;
+}
+.detail-list dt { color: var(--color-text-muted); }
+.detail-list dd { margin: 0; font-weight: 600; }
+
+/* Skills check list: icon + TEXT (never color alone) */
+.check-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.check-list li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 14px;
+}
+.check-list .ok { color: var(--color-success); }
+.check-list .missing { color: var(--color-danger); }
+.check-list .poids { margin-left: auto; color: var(--color-text-muted); }
+
+.panel-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+.panel-actions .btn { flex: 1; }
+
+/* ---------- Mentor cards grid ---------- */
+.mentor-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--space-4);
+  padding: var(--space-4);
+}
+.mentor-card-top {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+.mentor-stats {
+  display: flex;
+  gap: var(--space-4);
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+.mentor-stats b { color: var(--color-foreground); }
+/* .select-item puts everything in a column; give the card some breathing room */
+.mentor-grid .select-item { gap: var(--space-3); }
+
+/* ---------- Convention document ---------- */
+.convention-doc {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: var(--space-6);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: #FFFFFF;
+  font-size: 14px;
+}
+.convention-title { text-align: center; }
+.convention-title h2 { font-size: 20px; }
+.convention-title p { margin: var(--space-1) 0 0; color: var(--color-text-muted); }
+.convention-doc h3 {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-primary-hover);
+  margin-bottom: var(--space-1);
+}
+.convention-doc p { margin: 0 0 2px; }
+
+.signatures {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-2);
+}
+.signature {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-3);
+  border-radius: var(--radius-sm);
+  background: var(--color-muted);
+  font-size: 13px;
+}
+.signature.signed {
+  background: var(--color-success-bg);
+  color: var(--color-success);
+}
+
+/* ---------- PRINT: show only the convention ---------- */
+@media print {
+  /* hide everything... */
+  body * { visibility: hidden; }
+  /* ...except the document and what's inside it */
+  .convention-doc,
+  .convention-doc * { visibility: visible; }
+  .convention-doc {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    border: 0;
+    font-size: 12pt;   /* print text in points, at least 12pt */
+  }
+}

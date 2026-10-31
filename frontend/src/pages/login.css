@@ -1,0 +1,130 @@
+/* login.css — two columns: brand panel (left) + form (right) */
+
+.login-page {
+  display: flex;
+  flex-wrap: wrap;               /* on small screens the panel goes above the form */
+  min-height: 100vh;
+}
+
+/* ---------- Left: brand panel ---------- */
+.login-brand {
+  flex: 1 1 440px;
+  background: var(--color-sidebar);
+  color: #E0F2FE;
+  padding: 56px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--space-8);
+}
+.login-brand h1 {
+  color: #FFFFFF;
+  font-size: 36px;
+  max-width: 460px;
+}
+.login-brand p {
+  font-size: 16px;
+  max-width: 440px;
+  margin: var(--space-4) 0 0;
+}
+.login-eyebrow {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #7DD3FC;
+  margin-bottom: var(--space-3);
+}
+.login-roles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+.login-roles span {
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+  font-size: 14px;
+}
+
+/* ---------- Right: form ---------- */
+.login-form-zone {
+  flex: 999 1 480px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-8) var(--space-4);
+}
+.login-card {
+  width: 100%;
+  max-width: 420px;
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+.login-card h2 { font-size: 26px; }
+.login-card .subtitle {
+  margin: var(--space-1) 0 0;
+  color: var(--color-text-muted);
+  font-size: 15px;
+}
+
+/* Password input + "eye" button side by side */
+.password-wrapper {
+  position: relative;
+}
+.password-wrapper .input {
+  width: 100%;
+  padding-right: 52px;           /* leave space for the eye button */
+}
+.password-toggle {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 48px;
+  height: 44px;
+  border: 0;
+  background: transparent;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+}
+
+/* Error box for a wrong login/password */
+.login-alert {
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  background: var(--color-danger-bg);
+  color: var(--color-danger);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.login-footer {
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--space-4);
+  text-align: center;
+  font-size: 14px;
+  color: var(--color-text-muted);
+}
+.login-footer a {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+/* The submit button takes the full width of the card */
+.login-card .btn { width: 100%; }
+
+@media (max-width: 600px) {
+  .login-brand { padding: var(--space-6); }
+  .login-brand h1 { font-size: 28px; }
+  .login-card { padding: var(--space-6); }
+}

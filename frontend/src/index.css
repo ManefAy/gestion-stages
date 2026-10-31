@@ -1,0 +1,104 @@
+/* =========================================================
+   index.css — Design system for DevTec Gestion des Stages
+   Style: Minimalism & Swiss (clean, grid, high contrast)
+   ========================================================= */
+
+/* 1) Import the two fonts from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap');
+
+/* 2) DESIGN TOKENS — every color/size used in the app lives here */
+:root {
+  /* --- Brand colors --- */
+  --color-primary: #0369A1;        /* main blue: buttons, active links */
+  --color-primary-hover: #075985;  /* darker blue when hovering */
+  --color-primary-soft: #E0F2FE;   /* very light blue: selected rows, chips */
+  --color-on-primary: #FFFFFF;     /* text written ON the blue */
+
+  /* --- Surfaces (backgrounds) --- */
+  --color-background: #F0F9FF;     /* page background */
+  --color-card: #FFFFFF;           /* cards, tables, forms */
+  --color-muted: #E7EFF5;          /* light grey zones */
+  --color-sidebar: #0C4A6E;        /* dark blue sidebar */
+
+  /* --- Text --- */
+  --color-foreground: #0C4A6E;     /* main text (dark blue, not pure black) */
+  --color-text-muted: #475569;     /* secondary text, still 4.5:1 contrast */
+
+  /* --- Borders & focus --- */
+  --color-border: #CBD5E1;
+  --color-ring: #0369A1;           /* keyboard focus outline */
+
+  /* --- Status colors (always pairs: light background + dark text) --- */
+  --color-success-bg: #DCFCE7;  --color-success: #166534;
+  --color-warning-bg: #FEF3C7;  --color-warning: #92400E;
+  --color-danger-bg:  #FEE2E2;  --color-danger:  #B91C1C;
+
+  /* --- Typography --- */
+  --font-heading: 'Poppins', system-ui, sans-serif;
+  --font-body: 'Open Sans', system-ui, sans-serif;
+
+  /* --- Spacing scale (multiples of 4px) --- */
+  --space-1: 4px;  --space-2: 8px;  --space-3: 12px;
+  --space-4: 16px; --space-6: 24px; --space-8: 32px;
+
+  /* --- Shape & motion --- */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --shadow-card: 0 1px 2px rgba(12, 74, 110, 0.06);
+  --transition: 200ms ease;        /* skill rule: hover 150–300ms */
+}
+
+/* 3) BASE STYLES — applied to the whole page */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;           /* padding is included in width */
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 16px;                  /* skill rule: body text at least 16px */
+  line-height: 1.5;
+  color: var(--color-foreground);
+  background: var(--color-background);
+}
+
+h1, h2, h3 {
+  font-family: var(--font-heading);
+  margin: 0;
+  line-height: 1.25;
+}
+
+/* Form elements don't inherit the font by default, so we force it */
+input, select, textarea, button {
+  font: inherit;
+  color: inherit;
+}
+
+/* 4) ACCESSIBILITY */
+
+/* Visible focus ring when navigating with the keyboard (Tab key) */
+:focus-visible {
+  outline: 3px solid var(--color-ring);
+  outline-offset: 2px;
+}
+
+/* Hides text visually but keeps it for screen readers */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* If the user asked their OS for less motion, we remove animations */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
