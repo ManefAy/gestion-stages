@@ -1,0 +1,2 @@
+# Copy this file as "application-local.properties" and put your MySQL password
+spring.datasource.password=CHANGE_ME
