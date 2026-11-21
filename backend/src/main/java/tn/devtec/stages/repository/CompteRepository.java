@@ -14,4 +14,7 @@ public interface CompteRepository extends JpaRepository<Compte, Long> {
 
     // Rule "unique login" when the admin creates an account (Step 4)
     boolean existsByLogin(String login);
+    
+    // SELECT COUNT(*) > 0 … WHERE login = ? AND id <> ?
+    boolean existsByLoginAndIdNot(String login, Long id);
 }
